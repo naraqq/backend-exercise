@@ -20,25 +20,62 @@ app.get("/", (req, res) => {
           const randomElement = isbn[Math.floor(Math.random() * isbn.length)];
               mainElements.push(randomElement);
       }
-      //   console.log(obj);
-    //   res.send(mainElements)
       res.render("index", { data: mainElements });
+
     }
   });
 });
-// app.get("/", function (req, res) {});
+app.get("/data", function (req, res) {
+  file.readFile("books.json", "utf-8", (err, data) => {
+    if(err) {
+      throw err
+    } else {
+      const json = JSON.parse(data)
+      res.send(json)
+    }
+  })
 
-// API
+});
 
-// API
+// API !!!
+// API !!!
 app.use("/api", router);
 
-router.get("/", (req, res) => {
-  res.send("/1 ");
+router.get("/authors", (req, res) => {
+  file.readFile("books.json", "utf-8", (err, data) => {
+    if(err) {
+      throw err
+    } else {
+      const json = JSON.parse(data)
+      const authors = json.books.map(e => e.author)
+      res.send(authors)
+    }
+  })
+});
+
+router.get("/allbooks", (req, res) => {
+  file.readFile("books.json", "utf-8", (err, data) => {
+    if(err) {
+      throw err
+    } else {
+      const json = JSON.parse(data)
+      res.send(json)
+    }
+  })
+});
+router.get("/allisbn", (req, res) => {
+  file.readFile("books.json", "utf-8", (err, data) => {
+    if(err) {
+      throw err
+    } else {
+      const json = JSON.parse(data)
+      const isbn = json.books.map(e => e.isbn)
+      res.send(isbn)
+    }
+  })
 });
 
 // BOOKS!!!
-
 // BOOKS!!!
 app.use("/book", router);
 app.listen(3000);

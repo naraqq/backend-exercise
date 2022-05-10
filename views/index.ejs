@@ -20,14 +20,25 @@
         <div class="item"><%=JSON.stringify(data[1])%></div>
         <div class="item"><%=JSON.stringify(data[2])%></div>
 
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-
+        <div id="lists" class="items">
+          <button id="buttonList">List of Books</button>
+          <p>List of books :</p>
+        </div>
+        <div class="item-apis">
+          <button id="authors">authors API</button>
+          <button id="allbooks">allbooks API</button>
+          <button id="isbn">allbooks ISBN API</button>
+          <br>
+          <form  id="isbn_form" action="">
+            <input  placeholder="ISBN" type="text">
+            <button type="submit" id="authors">search by ISBN</button>
+          </form>
+          <form action="">
+            <input placeholder="BOOK NAME" type="text">
+            <button id="authors">search by BookName</button>
+          </form>
+        </div>
     </div>
+    <script src="static/script.js"></script>
   </body>
 </html>
